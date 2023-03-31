@@ -1,0 +1,74 @@
+.tabs
+    margin: 13.34rem 0 0 0
+    
+.tabs__list 
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    margin-bottom: 0
+    list-style: none
+    border-bottom: 1px solid #5E5E5E
+    margin-bottom: -1px
+
+.tabs__btn
+    font-weight: 500
+    font-size: 1.8rem
+    text-align: center
+    color: $black_color
+    padding: 2.134rem 5.334rem 2.4667rem 5.334rem
+    cursor: pointer
+    background-color: #fff
+    border: none
+    &_active
+        border: 1px solid #5E5E5E
+        border-bottom-color: white
+        margin-bottom: -1px
+
+
+
+.tabs-item
+    padding: 5.334rem 0 0 4.534rem
+    &__img
+        width: 6.8rem //102px
+        height: 6.8rem
+    &__wrapper
+        display: flex
+    &__p
+        padding-top: 1rem
+        margin: 0
+        &-second
+            width: 70.8%
+        
+
+    &__wrapper-descr
+        padding: 0px 6.1334rem 0px 6.334rem
+        width: 740px
+    &__title
+        padding-bottom: 1rem
+        font-weight: 600
+        font-size: 1.467rem
+        color: $black_color
+    &__text
+        font-weight: 400
+        font-size: 1rem
+        line-height: 150%
+        color: $black_color
+        &_second
+            width: 53.334rem
+        
+    &__price
+        font-weight: 600
+        font-size: 1.467rem
+        color: $black_color
+        width: 7rem
+    &__price-mobile
+        display: none
+        font-weight: 600
+        font-size: 1.467rem
+        color: $black_color
+        width: 7rem
+
+.tabs__content
+    display: none
+    &_active
+        display: block
