@@ -19,12 +19,11 @@
     cursor: pointer
     background-color: #fff
     border: none
-    &_active
-        border: 1px solid #5E5E5E
-        border-bottom-color: white
-        margin-bottom: -1px
 
-
+.react-tabs__tab--selected
+    border: 1px solid #5E5E5E
+    border-bottom-color: white
+    margin-bottom: -1px
 
 .tabs-item
     padding: 5.334rem 0 0 4.534rem
@@ -39,7 +38,6 @@
         &-second
             width: 70.8%
         
-
     &__wrapper-descr
         padding: 0px 6.1334rem 0px 6.334rem
         width: 740px
@@ -67,8 +65,3 @@
         font-size: 1.467rem
         color: $black_color
         width: 7rem
-
-.tabs__content
-    display: none
-    &_active
-        display: block

@@ -1,12 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import tabs_delivery from '../data/tabs-delivery.json'
 import tabs_payment from '../data/tabs-payment.json'
 
 
 const MyTabs = () => {
-	const [activeTab, setActiveTab] = useState('')
-
 	function renderTabContent(tabName) {
 		const result = tabName.map(tabItem => 
 			<div key={tabItem.altImg} className="tabs-item">
@@ -35,8 +33,8 @@ const MyTabs = () => {
 					<TabList className="tabs__list">
 						<Tab className="tabs__item">
 							<button 
-								className="tabs__btn tabs__btn_active"
-								name='Доставка'
+								id="Доставка"
+								className="tabs__btn"
 							>
 								Доставка
 							</button>
@@ -44,19 +42,19 @@ const MyTabs = () => {
 
 						<Tab className="tabs__item">
 							<button 
+								id="Оплата"
 								className="tabs__btn" 
-								name='Оплата'
 							>
 								Оплата
 							</button>
 						</Tab>
 					</TabList>
 
-					<TabPanel className="tabs__content tabs__content_active">
+					<TabPanel>
 						{renderTabContent(tabs_delivery)}
 					</TabPanel>
 
-					<TabPanel className="tabs__content tabs__content_active">
+					<TabPanel>
 						{renderTabContent(tabs_payment)}
 					</TabPanel>
 				</div>
