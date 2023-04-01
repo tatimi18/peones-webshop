@@ -1,7 +1,7 @@
 [
 
     { 
-        "imgSrc": "./icons/payment.svg",
+        "imgSrc": "./icons_tabs/payment.svg",
         "altImg": "payment",
         "title": "Перевод на банковскую карту",
         "price": "",
@@ -12,7 +12,7 @@
     },
 
     { 
-        "imgSrc": "./icons/cash.svg",
+        "imgSrc": "./icons_tabs/cash.svg",
         "altImg": "cash",
         "title": "Оплата наличными курьеру",
         "price": "",
@@ -22,7 +22,7 @@
     },
 
     { 
-        "imgSrc": "./icons/invoice.svg",
+        "imgSrc": "./icons_tabs/invoice.svg",
         "altImg": "invoice",
         "title": "Оплата по счёту в электронном письме",
         "price": "",
@@ -32,7 +32,7 @@
     },
 
     { 
-        "imgSrc": "./icons/credit-card.svg",
+        "imgSrc": "./icons_tabs/credit-card.svg",
         "altImg": "credit-card",
         "title": "Оплата в пунктах выдачи CDEK",
         "price": "",
