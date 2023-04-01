@@ -62,19 +62,7 @@
     &__item
         display: flex
         flex-direction: column
-    &__textarea
-        margin: 0.33334rem 0 3.6667rem 0 //5px 0 55px 0
-        padding: 1rem 1.13334rem //15px 17px
-        font-weight: 500
-        font-size: 1rem //15px
-        letter-spacing: -0.03em
-        width: 100%//17.3334rem //260px
-        height: 10.7333334rem //161px
-        background: #E5E5E5
-        border: none
-        &::placeholder
-            color: $grey_color
-    &__input
+    &__inputs
         margin-top: 0.33334rem //5px
         padding: 1rem 1.13334rem //15px 17px
         font-weight: 500
@@ -84,12 +72,16 @@
         height: 3.333334rem //50px
         background: #E5E5E5
         border: none
+        outline-color: $pink_color
         &::placeholder
             color: $grey_color
-        &:active
-            border: 1px solid $pink_color
+        &__textarea
+            letter-spacing: -0.03em
+            font-size: 1rem //15px
+            font-family: 'Montserrat'
+            margin: 0.33334rem 0 3.8667rem 0 //5px 0 55px 0
+            height: 10.7333334rem //161px
 
-            
 .error
     border: 1px solid red
 label.error

@@ -1,6 +1,6 @@
 [
     { 
-        "imgSrc": "./icons_tabs/shopping-bag.svg",
+        "imgSrc": "./icons/shopping-bag.svg",
         "altImg": "shopping-bag",
         "title": "Доставка курьерской службой CDEK",
         "price": "от 300 ₽",
@@ -12,7 +12,7 @@
     },
 
     { 
-        "imgSrc": "./icons_tabs/box.svg",
+        "imgSrc": "./icons/box.svg",
         "altImg": "box",
         "title": "Доставка Почтой России",
         "price": "от 250 ₽",
@@ -26,7 +26,7 @@
     },
 
     { 
-        "imgSrc": "./icons_tabs/map.svg",
+        "imgSrc": "./icons/map.svg",
         "altImg": "map",
         "title": "Самовывоз",
         "price": "бесплатно",
@@ -36,7 +36,7 @@
     },
 
     { 
-        "imgSrc": "./icons_tabs/car.svg",
+        "imgSrc": "./icons/car.svg",
         "altImg": "car",
         "title": "Доставка до Московского терминала транспортной компании",
         "price": "бесплатно",

@@ -1,0 +1,25 @@
+[
+    { 
+        "href": "https://vk.com/peones",
+        "srcImg": "icons/vk_icon.svg",
+        "altImg": "vk"
+    },
+    
+    { 
+        "href": "https://t.me/peones",
+        "srcImg": "icons/telegram_icon.svg",
+        "altImg": "telegram"
+    },
+    
+    { 
+        "href": "/",
+        "srcImg": "icons/facebook_icon.svg",
+        "altImg": "facebook"
+    },
+    
+    { 
+        "href": "https://www.instagram.com/peones.ru/",
+        "srcImg": "icons/instagram_icon.svg",
+        "altImg": "instagram"
+    }
+]

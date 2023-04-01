@@ -5,6 +5,7 @@ import Mainpage from './components/Mainpage';
 import MyTabs from './components/TabList';
 import Gallery from './components/Gallery';
 import About from './components/About';
+import Contacts from './components/Contacts';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 			<MyTabs/>
 			<Gallery/>
 			<About/>
+			<Contacts/>
 		</div>
 	);
 }
