@@ -14,7 +14,6 @@ const Contacts = () => {
 			console.log('put name');
 			console.log(e.target);
 		}
-
 	}
 
 	return (
