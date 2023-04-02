@@ -1,4 +1,4 @@
-.form
+.form-section
     margin: 13.34rem 0 0 0
     background: url('../img/bg/form_bg.jpg') center center/cover no-repeat
     max-width: 100% //1920px
@@ -38,11 +38,14 @@
             height: 2.6rem //39px
     &__info
         display: block
+a.form-section__info:hover
+    color: $pink_color
+    transition: 0.5s all
 
-.form-columns
+.fields.form-columns
     display: flex
     justify-content: space-between
-.form-column
+.fields
     width: 44%//width: 17.3334rem //260px
     &__second
         display: flex
@@ -52,20 +55,21 @@
         //padding: 2.46667rem 0 0 4.2rem //37px 0 0 63px
         
 
-.form-main
-    //display: flex
-    //flex-wrap: wrap
+.ui.form.main-form
+    display: flex
+    flex-direction: column
     padding: 4.2667rem 4.6rem //64px 69px
     width: 64% //724px
+    min-height: 500px
     border: 3px solid white
     background: $white_color
-    &__item
+    .field
         display: flex
         flex-direction: column
     &__inputs
         margin-top: 0.33334rem //5px
         padding: 1rem 1.13334rem //15px 17px
-        font-weight: 500
+        /* font-weight: 500 */
         font-size: 1rem //15px
         letter-spacing: -0.03em
         width: 100% //17.3334rem //260px 124%
@@ -82,11 +86,67 @@
             margin: 0.33334rem 0 4.6rem 0 //5px 0 55px 0
             height: 10.7333334rem //161px
 
+
+.ui.form.fields
+    margin: 0
+
+.ui.form.fields.form-columns
+    display: flex
+    width: 100%
+
+
+/* .ui.form.fields.form-column
+    display: flex
+    flex-direction: column */
+
+.ui.form .field>label.form__subtitle__grey 
+    padding-top: 39px
+    font-family: 'Montserrat'
+    font-weight: 400
+    font-size: 14px
+    color: $grey_color
+
+.ui.form .field:last-child, .ui.form .fields:last-child .field
+    width: 260px
+
+.ui.form .fields 
+    display: flex
+    flex-direction: row
+    width: 100%
+    margin: 0
+
+.ui.form input[type=email].form-main__inputs, .ui.form input[type=email]:focus.form-main__inputs, .ui.form input[type=tel].form-main__inputs, .ui.form input[type=tel]:focus.form-main__inputs, .ui.form input[type=text].form-main__inputs, .ui.form input[type=text]:focus.form-main__inputs
+    border-radius: 0
+    margin-top: 0.33334rem //5px
+    padding: 1rem 1.13334rem //15px 17px
+    font-size: 1rem //15px
+    letter-spacing: -0.03em
+    width: 100% //17.3334rem //260px 124%
+    height: 3.333334rem //50px
+    background: #E5E5E5
+    border: none
+    outline-color: $pink_color
+    &::placeholder
+        color: $grey_color
+
+
+.ui.form textarea:not([rows]).form-main__inputs.form-main__inputs__textarea
+    letter-spacing: -0.03em
+    font-size: 1rem //15px
+    font-family: 'Montserrat'
+    margin: 0.33334rem 0 4.5rem 0
+    height: 11.5rem
+    background: #E5E5E5
+    border-radius: 0
+    border: none
+    &::placeholder
+        color: $grey_color
+        
+/* .error
+    border: 1px solid red */
 .error
-    border: 1px solid red
-label.error
     position: absolute
-    padding-top: 7.66667rem //115px
+    padding-top: 0.16667rem
     border: none
     font-weight: 400
     font-size: 0.933334rem //14px

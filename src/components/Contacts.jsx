@@ -1,68 +1,74 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ContactsInfo from './ContactsInfo'
+import { Form, Button } from 'semantic-ui-react';
+import { useForm } from "react-hook-form";
+import ReactInputMask from 'react-input-mask';
+
 
 const Contacts = () => {
 
-	const [name, setName] = useState('')
-	const [tel, setTel] = useState('')
-	const [email, setEmail] = useState('')
-	const [message, setMessage] = useState('')
+	const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-	function postForm(e) {
-		e.preventDefault()
-		if (!name) {
-			console.log('put name');
-			console.log(e.target);
-		}
-	}
+	const onSubmit = (data) => {
+		console.log(data);
+		reset()
+		reset({tel: ''})
+	  }
 
 	return (
-		<section className="form" id="contacts">
+		<section className="form-section" id="contacts">
             <div className="container-form">
                 <ContactsInfo/>
-                <form name="main" id="mainform" className="form-main">
-                    <div className="form__title form__title__black">Оставьте заявку на обратный звонок:</div>
+                <Form className='main-form' onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-section__title form-section__title__black">Оставьте заявку на обратный звонок:</div>
 
-                    <div className="form-columns">
+                    <Form.Group className="form-columns">
                         <div className="form-column">
 
-                            <div className="form-main__item">
-                                <label htmlFor="input_1" className="form__subtitle form__subtitle__grey">Имя:</label>
+                            <Form.Field>
+                                <label className="form__subtitle__grey">Имя:</label>
                                 <input
 									required 
 									tabIndex="1" 
-									value={name}
-									onChange={e => setName(e.target.value)} 
+									{...register("name", { required: true, minLength: 2 })}
 									type="text" 
 									className="form-main__inputs" 
 									placeholder="Введите Ваше имя" 
 									onFocus={(e) => {if (e.target.placeholder === 'Введите Ваше имя') {e.target.placeholder = ''}}} 
 									onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = 'Введите Ваше имя'}}}
 								/>
-                            </div>
+                            </Form.Field>
 
-                            <div className="form-main__item">
-                                <label htmlFor="input_2" className="form__subtitle form__subtitle__grey">Номер телефона:</label>
-                                <input 
+							{errors.name && <p className='error'>Имя слишком короткое</p>}
+
+                            <Form.Field>
+                                <label className="form__subtitle__grey">Номер телефона:</label>
+                                <ReactInputMask 
 									required
+									mask="+7 (999) 999 - 9999"
+									maskChar={null}
 									tabIndex="2" 
-									value={tel}
-									onChange={e => setTel(e.target.value)} 
+									{...register("tel", { required: true, minLength: 10 })}
 									type="tel" 
 									className="form-main__inputs" 
 									placeholder="+7 (903) - 28|" 
 									onFocus={(e) => {if (e.target.placeholder === '+7 (903) - 28|') {e.target.placeholder = ''}}} 
 									onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = '+7 (903) - 28|'}}}
 								/>
-                            </div>
+                            </Form.Field>
 
-                            <div className="form-main__item">
-                                <label htmlFor="input_3" className="form__subtitle form__subtitle__grey">E-mail:</label>
+							{errors.tel && <p className='error'>Некорректный номер</p>}
+
+                            <Form.Field>
+                                <label className="form__subtitle__grey">E-mail:</label>
                                 <input 
-									required
+
 									tabIndex="3" 
-									value={email}
-									onChange={e => setEmail(e.target.value)} 
+									{...register("email",
+									{
+										required: true,
+										pattern: /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+									})}
 									id="input_2" 
 									type="email" 
 									className="form-main__inputs" 
@@ -70,32 +76,34 @@ const Contacts = () => {
 									onFocus={(e) => {if (e.target.placeholder === 'example@mail.ru') {e.target.placeholder = ''}}} 
 									onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = 'example@mail.ru'}}}
 								/>
-                            </div>
+                            </Form.Field>
 
+							{errors.email && <p className='error'>Почта должна содердать @example.ru</p>}
                         </div>
 
                         <div className="form-column form-column__second">
-							<label htmlFor="textarea_4" className="form__subtitle form__subtitle__grey">Сообщение:</label>
-							<textarea 
-								tabIndex="4" 
-								value={message}
-								onChange={e => setMessage(e.target.value)} 
-								type="text" 
-								className="form-main__inputs form-main__inputs__textarea" 
-								placeholder="Введите Ваше сообщение" 
-								onFocus={(e) => {if (e.target.placeholder === 'Введите Ваше сообщение') {e.target.placeholder = ''}}} 
-								onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = 'Введите Ваше сообщение'}}}
-							/>
-                            <button 
+							<Form.Field>
+								<label className="form__subtitle__grey">Сообщение:</label>
+								<textarea 
+									tabIndex="4" 
+									{...register("message")}
+									type="text" 
+									className="form-main__inputs form-main__inputs__textarea" 
+									placeholder="Введите Ваше сообщение" 
+									onFocus={(e) => {if (e.target.placeholder === 'Введите Ваше сообщение') {e.target.placeholder = ''}}} 
+									onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = 'Введите Ваше сообщение'}}}
+								/>
+
+							</Form.Field>
+                            <Button 
 								type="submit" 
-								className="button button__form"
-								onClick={(e) => postForm(e)}
+								className="button__form"
 							>
 								Оставить заявку
-							</button>
+							</Button>
                         </div>
-                    </div>
-                </form>
+                    </Form.Group>
+                </Form>
             </div>
         </section>
 	)
