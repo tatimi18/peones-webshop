@@ -1,6 +1,7 @@
-import React from 'react'
-import ListIcons from './ListIcons'
-import { Form } from 'semantic-ui-react'
+import React from 'react';
+import ListIcons from './ListIcons';
+import { Button, Form, FormField } from 'semantic-ui-react';
+import { useForm } from "react-hook-form";
 
 const Footer = () => {
     const instGallery = [
@@ -10,7 +11,7 @@ const Footer = () => {
         {href: "https://www.instagram.com/peones.ru/", src: "img/footer/ig4.jpg", alt: "ig4"},
         {href: "https://www.instagram.com/peones.ru/", src: "img/footer/ig5.jpg", alt: "ig5"},
         {href: "https://www.instagram.com/peones.ru/", src: "img/footer/ig6.jpg", alt: "ig6"},
-    ]
+    ];
 
     const navLinks = [
         {href: '#mainpage', name: 'Главная'},
@@ -19,11 +20,19 @@ const Footer = () => {
         {href: '#photogallery', name: 'Фотогалерея'},
         {href: '#about', name: 'О нас'},
         {href: '#contacts', name: 'Контакты'},
-    ]
+    ];
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+	const onSubmit = (data) => {
+		console.log(data);
+		reset()
+	}
+
     return (
         <footer className="footer">
             <div className="container-footer">
-                <div className="blocks-wrapper">
+                <div className="footer__blocks-wrapper">
                     <div className="footer__block">
                         <div className="footer__title">Peones</div>
                         <div className="footer__subtitle">частная коллекция пионов из Сергиева Посада</div>
@@ -51,15 +60,49 @@ const Footer = () => {
                             )}
                         </div>
                     </div>
+
                     <div className="footer__block">
-                        {/* <Form>
-                            <div class="footer__nav-title mb20px">Подписаться на новости</div>
-                            <input type="text" name="name" class="footer__input footer-name" placeholder="Имя" onfocus="if (this.placeholder == 'Имя') {this.placeholder = '';}" onblur="if (this.placeholder == '') {this.placeholder = 'Имя'; this.style.color = '#FFFFFF'}">
-                            <input type="email" name="email" class="footer__input footer-email" placeholder="E-mail" onfocus="if (this.placeholder == 'E-mail') {this.placeholder = ''; this.style.color = '#FFFFFF'}" onblur="if (this.placeholder == '') {this.placeholder = 'E-mail'; this.style.color = '#FFFFFF'}">
-                            <input type="submit" class="button__footer">Подписаться</input>
-                        </Form> */}
-                        <Form>
+                        <Form onSubmit={handleSubmit(onSubmit)}>
                             <div className="footer__nav-title mb20px">Подписаться на новости</div>
+                            
+                            <FormField>
+                                <input 
+                                    type="text" 
+                                    {...register("name", { required: true, minLength: 2 })}
+                                    className="footer__input footer-name" 
+                                    placeholder="Имя"
+                                    onFocus={(e) => {if (e.target.placeholder === 'Имя') {e.target.placeholder = ''}}} 
+									onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = 'Имя'}}}
+                                    />
+                            {errors.name && <p className='error-footer'>Имя слишком короткое</p>}
+                            </FormField>
+
+
+
+                            <FormField>
+                                <input 
+                                    type="email" 
+                                    {...register("email",
+									{
+										required: true,
+										pattern: /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+									})}
+                                    placeholder="E-mail"
+                                    className="footer__input footer-email" 
+                                    onFocus={(e) => {if (e.target.placeholder === 'E-mail') {e.target.placeholder = ''}}} 
+									onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = 'E-mail'}}}
+                                />
+                                {errors.email && <p className='error-footer error-footer-last'>Некорректная почта</p>}
+                            </FormField>
+
+
+
+                            <Button 
+								type="submit" 
+								className="btn__footer"
+							>
+								Подписаться
+							</Button>
 
                         </Form>
                     </div>

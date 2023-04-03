@@ -4,6 +4,9 @@
     background: #0D1718
     width: 100% //1920px
     height: 25.6667rem //385px
+    &__blocks-wrapper
+        display: flex
+        justify-content: space-between
     &__title
         font-family: 'SophieScholl'
         font-weight: 300
@@ -21,11 +24,12 @@
         width: min-content
 
     &__social
-        padding-top: 2rem 
+        padding: 2rem  0
         display: flex
         justify-content: space-between
         width: 14.2rem //213px
     &__nav-title
+        font-family: 'Montserrat'
         font-weight: 600
         font-size: 1rem //15px
         letter-spacing: -0.03em
@@ -72,7 +76,6 @@
         &:focus
             color: $white_color
     &__line
-        margin-top: 1rem
         max-width: 1103px
         height: 1px
         background: $pink_color
@@ -90,3 +93,23 @@
 
 .mb20px
     margin-bottom: 1rem //15px
+
+.ui.form input[type=text].footer__input, .ui.form input[type=text]:focus.footer__input.footer,.ui.form input[type=email].footer__input, .ui.form input[type=email]:focus.footer__input
+    border-radius: 0
+    width: 12.6rem //189px
+    height: 2.6rem //39px
+    border: 1px solid $pink_color
+    background-color: rgba(0, 0, 0, 0)
+    margin-bottom: 1rem
+    padding: 0.8rem //12px
+    color: $white_color
+
+.error-footer
+    top: 70px
+    position: absolute
+    border: none
+    font-weight: 400
+    font-size: 0.933334rem //14px
+    color: #FF0000
+    &-last
+        top: 135px

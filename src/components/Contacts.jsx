@@ -1,6 +1,6 @@
 import React from 'react'
 import ContactsInfo from './ContactsInfo'
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, FormField } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
 import ReactInputMask from 'react-input-mask';
 
@@ -13,7 +13,7 @@ const Contacts = () => {
 		console.log(data);
 		reset()
 		reset({tel: ''})
-	  }
+	}
 
 	return (
 		<section className="form-section" id="contacts">
@@ -25,7 +25,7 @@ const Contacts = () => {
                     <Form.Group className="form-columns">
                         <div className="form-column">
 
-                            <Form.Field>
+                            <FormField>
                                 <label className="form__subtitle__grey">Имя:</label>
                                 <input
 									required 
@@ -37,11 +37,11 @@ const Contacts = () => {
 									onFocus={(e) => {if (e.target.placeholder === 'Введите Ваше имя') {e.target.placeholder = ''}}} 
 									onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = 'Введите Ваше имя'}}}
 								/>
-                            </Form.Field>
+                            </FormField>
 
 							{errors.name && <p className='error'>Имя слишком короткое</p>}
 
-                            <Form.Field>
+                            <FormField>
                                 <label className="form__subtitle__grey">Номер телефона:</label>
                                 <ReactInputMask 
 									required
@@ -55,11 +55,11 @@ const Contacts = () => {
 									onFocus={(e) => {if (e.target.placeholder === '+7 (903) - 28|') {e.target.placeholder = ''}}} 
 									onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = '+7 (903) - 28|'}}}
 								/>
-                            </Form.Field>
+                            </FormField>
 
 							{errors.tel && <p className='error'>Некорректный номер</p>}
 
-                            <Form.Field>
+                            <FormField>
                                 <label className="form__subtitle__grey">E-mail:</label>
                                 <input 
 
@@ -76,13 +76,13 @@ const Contacts = () => {
 									onFocus={(e) => {if (e.target.placeholder === 'example@mail.ru') {e.target.placeholder = ''}}} 
 									onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = 'example@mail.ru'}}}
 								/>
-                            </Form.Field>
+                            </FormField>
 
 							{errors.email && <p className='error'>Почта должна содердать @example.ru</p>}
                         </div>
 
                         <div className="form-column form-column__second">
-							<Form.Field>
+							<FormField>
 								<label className="form__subtitle__grey">Сообщение:</label>
 								<textarea 
 									tabIndex="4" 
@@ -94,7 +94,7 @@ const Contacts = () => {
 									onBlur={(e) => {if (e.target.placeholder === '') {e.target.placeholder = 'Введите Ваше сообщение'}}}
 								/>
 
-							</Form.Field>
+							</FormField>
                             <Button 
 								type="submit" 
 								className="button__form"
