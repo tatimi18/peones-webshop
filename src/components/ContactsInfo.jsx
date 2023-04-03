@@ -1,14 +1,7 @@
 import React from 'react'
-import iconsContacts from '../data/contacts-icons.json'
+import ListIcons from './ListIcons'
 
 const ContactsInfo = () => {
-
-	const ListIcons = iconsContacts.map(item => 
-		<div key={item.href} className="form-section__icon-border">
-			<a href={item.href} className="form-section__link">
-				<img src={item.srcImg} alt={item.altImg} className="form-section__icon"/>
-			</a>
-		</div>)
 
 	return (
 		<div className="form-section__contacts">
@@ -26,9 +19,8 @@ const ContactsInfo = () => {
                                 <div className="form-section__adress">ул. Академика Силина, д. 1/22</div>
                                 </address>
 								
-                            <div className="form-section__icons-wrapper">
-                                {ListIcons}
-                            </div>
+                            <ListIcons className={'form-section__icons-wrapper'}/>
+
                         </div>
                     </div>
                     
