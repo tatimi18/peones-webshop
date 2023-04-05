@@ -7,12 +7,14 @@ import Gallery from './components/Gallery';
 import About from './components/About';
 import Contacts from './components/Contacts';
 import Footer from './components/Footer';
+import Catalog from './components/Catalog';
 
 
 function App() {
 	return (
 		<div className="App">
 			<Mainpage/>
+			<Catalog/>
 			<MyTabs/>
 			<Gallery/>
 			<About/>
