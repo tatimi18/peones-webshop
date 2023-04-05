@@ -2,6 +2,7 @@ import React from 'react';
 import ListIcons from './ListIcons';
 import { Button, Form, FormField } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
+import navbar from '../data/navbar.json'
 
 const Footer = () => {
     const instGallery = [
@@ -11,15 +12,6 @@ const Footer = () => {
         {href: "https://www.instagram.com/peones.ru/", src: "img/footer/ig4.jpg", alt: "ig4"},
         {href: "https://www.instagram.com/peones.ru/", src: "img/footer/ig5.jpg", alt: "ig5"},
         {href: "https://www.instagram.com/peones.ru/", src: "img/footer/ig6.jpg", alt: "ig6"},
-    ];
-
-    const navLinks = [
-        {href: '#mainpage', name: 'Главная'},
-        {href: '#catalog', name: 'Каталог'},
-        {href: '#delivery-payment', name: 'Доставка и оплата'},
-        {href: '#photogallery', name: 'Фотогалерея'},
-        {href: '#about', name: 'О нас'},
-        {href: '#contacts', name: 'Контакты'},
     ];
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -44,8 +36,8 @@ const Footer = () => {
                     <div className="footer__block">
                         <div className="footer__nav-title">Меню навигации:</div>
                         <ul className="footer__ul">
-                            {navLinks.map(item =>
-                                <li key={item.name} className="footer__links"><a href={item.href} className="footer__link">{item.name}</a></li>
+                            {navbar.map(item =>
+                                <li key={item.text} className="footer__links"><a href={item.href} className="footer__link">{item.text}</a></li>
                             )}
                         </ul>
                     </div>

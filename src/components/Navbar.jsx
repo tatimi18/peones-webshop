@@ -1,6 +1,7 @@
 import React from 'react'
 import searchIcon from '../icons/search_main.svg'
 import bagIcon from '../icons/bag_main.svg'
+import navbar from '../data/navbar.json'
 
 const Navbar = () => {
   return (
@@ -8,12 +9,9 @@ const Navbar = () => {
 		<nav>
 			<div className="container-navbar">
 				<ul className="main-parts">
-					<li className="main-parts__li"><a href="#mainpage" className="main-parts__item">Главная</a></li>
-					<li className="main-parts__li"><a href="#catalog" className="main-parts__item">Каталог</a></li>
-					<li className="main-parts__li"><a href="#delivery-payment" className="main-parts__item">Доставка и оплата</a></li>
-					<li className="main-parts__li"><a href="#photogallery" className="main-parts__item">Фотогалерея</a></li>
-					<li className="main-parts__li"><a href="#about" className="main-parts__item">О нас</a></li>
-					<li className="main-parts__li"><a href="#contacts" className="main-parts__item">Контакты</a></li>
+					{navbar.map(item =>
+						<li key={item.text} className="main-parts__li"><a href={item.href} className="main-parts__item">{item.text}</a></li>
+					)}
 				</ul>
 			</div>
 			<div className="main__burger">
