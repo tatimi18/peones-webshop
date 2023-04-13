@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-const CatalogCategory = ({currentCategory, categoryChangeHandler}) => {
+const CatalogCategories = ({currentCategory, categoryChangeHandler}) => {
 
 	const catalogItems = useSelector(state => state.catalog.catalog)
 
@@ -41,27 +41,49 @@ const CatalogCategory = ({currentCategory, categoryChangeHandler}) => {
 			<ul className="catalog__category-ul">
 				{Array.from(formOfFlower).map(item => 
 					<li key={item} className='catalog__category-li'>
-						<div className="catalog__category-link">{item}</div>
+						<div
+							className={item === currentCategory
+								? "catalog__category-link catalog__category-link__active"
+								: "catalog__category-link"
+							}
+							onClick={() => categoryChangeHandler(item)}
+						>
+							{item}
+						</div>
 					</li>
 				)}
 			</ul>
 
 			<div className="catalog__category-name">Сроки цветения</div>
 			<ul className="catalog__category-ul">
-				{}
 				{Array.from(periodOfFlowering).map(item => 
 					<li key={item} className='catalog__category-li'>
-						<div className="catalog__category-link">{item}</div>
+						<div
+							className={item === currentCategory
+								? "catalog__category-link catalog__category-link__active"
+								: "catalog__category-link"
+							}
+							onClick={() => categoryChangeHandler(item)}
+						>
+							{item}
+						</div>
 					</li>
 				)}
 			</ul>
 
 			<div className="catalog__category-name">Селекция</div>
 			<ul className="catalog__category-ul">
-				{}
 				{Array.from(selection).map(item => 
 					<li key={item} className='catalog__category-li'>
-						<div className="catalog__category-link">{item}</div>
+						<div
+							className={item === currentCategory
+								? "catalog__category-link catalog__category-link__active"
+								: "catalog__category-link"
+							}
+							onClick={() => categoryChangeHandler(item)}
+						>
+							{item}
+						</div>
 					</li>
 				)}
 			</ul>
@@ -69,4 +91,4 @@ const CatalogCategory = ({currentCategory, categoryChangeHandler}) => {
 	)
 }
 
-export default CatalogCategory
+export default CatalogCategories

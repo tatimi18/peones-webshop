@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 
-const CatalogFilterByColor = ({categoryTitle, categorySet}) => {
+const CatalogFilterByColor = ({currentColorCategory, ColorCategoryChangeHandler}) => {
 
 	const catalogItems = useSelector(state => state.catalog.catalog)
 
@@ -14,17 +14,17 @@ const CatalogFilterByColor = ({categoryTitle, categorySet}) => {
 	return (
 		<>
 			<div className="catalog__category-name">Фильтр по цвету</div>
-								
-			<input 
-				type="radio" 
-				name='all'
-			/>
-			<label htmlFor="all">все цвета</label>
+			
 			{Array.from(color).map(item => 
 				<div key={item}>
 					<input 
 						type="radio" 
-						name={item}
+						name='color'
+						checked={item === currentColorCategory
+							? true
+							: false
+						}
+						onChange={() => ColorCategoryChangeHandler(item)}
 					/>
 				<label htmlFor="color">{item}</label>
 				</div>

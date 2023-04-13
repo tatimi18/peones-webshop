@@ -1,20 +1,44 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
-import CatalogCategory from './CatalogCategory';
+import CatalogCategories from './CatalogCategories';
 import CatalogList from './CatalogList';
-import { filterCatalog } from '../../store/slices/catalogSlice';
+import { filter_lifeForm, filter_formOfFlower, filter_periodOfFlowering, filter_selection, filter_color } from '../../store/slices/catalogSlice';
+import CatalogFilterByColor from './CatalogFilterByColor';
 
 const Catalog = () => {
 	const [filterByCategory, setFilterByCategory] = useState(false);
 	const [currentCategory, setCurrentCategory] = useState('');
+	const [currentColorCategory, setCurrentColorCategory] = useState('')
 
 	const dispatch = useDispatch();
 
 	const categoryChangeHandler = (category) => {
 		setCurrentCategory(category);
-		dispatch(filterCatalog(category));
+		setCurrentColorCategory('')
+		if (category === 'Травянистые' || category === 'Ито-гибриды') {
+			dispatch(filter_lifeForm(category));
+		}
+		
+		if (category === 'Махровые' || category === 'Полумахровые' || category === 'Простые' || category === 'Японские') {
+			dispatch(filter_formOfFlower(category));
+		}
+
+		if (category === 'Средний' || category === 'Ранний') {
+			dispatch(filter_periodOfFlowering(category));
+		}
+
+		if (category === 'США' || category === 'СССР' || category === 'Япония' || category === 'Франция') {
+			dispatch(filter_selection(category));
+		}
 		setFilterByCategory(true);
+	};
+
+	const ColorCategoryChangeHandler = (color) => {
+		if (!currentCategory) {
+			dispatch(filter_color(color))
+		}
+		setCurrentColorCategory(color);
 	};
 
 	return (
@@ -27,16 +51,20 @@ const Catalog = () => {
 						<div className="catalog__sidebar">
 							
 							<div className="catalog__categories">
-								<CatalogCategory 
+								<CatalogCategories 
 									currentCategory={currentCategory}
 									categoryChangeHandler={categoryChangeHandler}
 								/>
-{/* 								<CatalogFilterByColor/> */}
+								<CatalogFilterByColor
+									currentColorCategory={currentColorCategory}
+									ColorCategoryChangeHandler={ColorCategoryChangeHandler}
+								/>
 							</div>
 						</div>
 
 						<CatalogList 
 							filter={filterByCategory}
+							currentColorCategory={currentColorCategory}
 						/>
 					</div>
 				</div>
@@ -45,7 +73,6 @@ const Catalog = () => {
 		</div>
 	)
 }
-
 
 // приклеиваем данные из store
 const mapStateToProps = store => {
