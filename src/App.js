@@ -7,8 +7,7 @@ import Gallery from './components/Gallery';
 import About from './components/About';
 import Contacts from './components/Contacts';
 import Footer from './components/Footer';
-import Catalog from './components/Catalog';
-
+import Catalog from './components/catalog/Catalog';
 
 function App() {
 	return (
