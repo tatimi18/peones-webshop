@@ -1,6 +1,22 @@
 .catalog
     &__wrapper
         display: flex
+        justify-content: space-between
+    &__category-all
+        padding: 10px 0
+        font-family: 'Montserrat'
+        font-weight: 600
+        font-size: 20px
+        line-height: 27px
+        color: #252525
+        cursor: pointer
+        &:hover
+            color: $pink_color
+            transition: 0.5s all
+        &__active
+            color: $pink_color
+            text-decoration: underline
+            
     &__category-name
         padding: 10px 0
         font-family: 'Montserrat'

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import CatalogCategories from './CatalogCategories';
 import CatalogList from './CatalogList';
-import { filter_lifeForm, filter_formOfFlower, filter_periodOfFlowering, filter_selection, filter_color } from '../../store/slices/catalogSlice';
+import { filter_lifeForm, filter_formOfFlower, filter_periodOfFlowering, filter_selection, filter_color, getDefault } from '../../store/slices/catalogSlice';
 import CatalogFilterByColor from './CatalogFilterByColor';
 
 const Catalog = () => {
@@ -15,7 +15,11 @@ const Catalog = () => {
 
 	const categoryChangeHandler = (category) => {
 		setCurrentCategory(category);
-		setCurrentColorCategory('')
+
+		if (category === 'Коллекция пионов') {
+			dispatch(getDefault())
+		}
+
 		if (category === 'Травянистые' || category === 'Ито-гибриды') {
 			dispatch(filter_lifeForm(category));
 		}
@@ -35,6 +39,10 @@ const Catalog = () => {
 	};
 
 	const ColorCategoryChangeHandler = (color) => {
+		/* if (color === 'все цвета') {
+			console.log('выводить исходный каталог');
+		} */
+
 		if (!currentCategory) {
 			dispatch(filter_color(color))
 		}

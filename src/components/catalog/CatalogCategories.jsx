@@ -19,6 +19,15 @@ const CatalogCategories = ({currentCategory, categoryChangeHandler}) => {
 
 	return (
 		<>
+			<div 
+				className={'Коллекция пионов' === currentCategory
+					? "catalog__category-all catalog__category-all__active"
+					: "catalog__category-all"
+				}
+				onClick={() => categoryChangeHandler('Коллекция пионов')}
+			>
+				Коллекция пионов
+			</div>
 
 			<div className="catalog__category-name">Жизненная форма</div>
 			<ul className="catalog__category-ul">

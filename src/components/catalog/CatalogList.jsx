@@ -8,11 +8,17 @@ const CatalogList = ({filter, currentColorCategory}) => {
 	const catalogItems = useSelector(state => state.catalog.catalog)
 	const filteredCatalog = useSelector(state => state.catalog.filteredCatalogItems)
 
-	let filteredByColor;
+	let filteredByColor = [];
 	if (currentColorCategory) {
-		filteredByColor = filteredCatalog.filter((item) =>
+		filteredCatalog.filter((item) =>
 			item.color === currentColorCategory)
 	}
+
+	let filteredCatalogLength = Array.from(filteredCatalog).length;
+	console.log('category ', filteredCatalogLength);
+	
+	let filteredByColorCatalogLength = filteredByColor.length;
+	console.log('color ', filteredByColorCatalogLength);
 
 	return (
 		<div className="catalog__list">
@@ -26,8 +32,8 @@ const CatalogList = ({filter, currentColorCategory}) => {
 				<CatalogCards parentToRender={filteredCatalog}/>
 			}
 			{!filter &&
-				currentColorCategory &&
-				<CatalogCards parentToRender={filteredByColor}/>
+				currentColorCategory && 
+				<CatalogCards parentToRender={filteredCatalog}/>
 			}
 			{filter &&
 				currentColorCategory &&

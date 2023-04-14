@@ -38,10 +38,16 @@ export const catalogSlice = createSlice({
 			state.filteredCatalogItems = state.catalog.filter(
 				(item) => item.color === action.payload
 			)
+		},
+
+		getDefault(state, action) {
+			state.filteredCatalogItems = state.catalog.filter(
+				(item) => item.color !== action.payload
+			)
 		}
 	},
 });
 
-export const { filter_lifeForm, filter_formOfFlower, filter_periodOfFlowering, filter_selection, filter_color } = catalogSlice.actions;
+export const { filter_lifeForm, filter_formOfFlower, filter_periodOfFlowering, filter_selection, filter_color, getDefault } = catalogSlice.actions;
 
 export default catalogSlice.reducer;

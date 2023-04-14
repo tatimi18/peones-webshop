@@ -15,6 +15,17 @@ const CatalogFilterByColor = ({currentColorCategory, ColorCategoryChangeHandler}
 		<>
 			<div className="catalog__category-name">Фильтр по цвету</div>
 			
+			<input 
+				type="radio" 
+				name='color'
+				checked={'все цвета' === currentColorCategory
+					? true
+					: false
+				}
+				onChange={() => ColorCategoryChangeHandler('все цвета')}
+			/>
+			<label htmlFor="color">все цвета</label>
+
 			{Array.from(color).map(item => 
 				<div key={item}>
 					<input 
