@@ -9,7 +9,7 @@ import CatalogFilterByColor from './CatalogFilterByColor';
 const Catalog = () => {
 	const [filterByCategory, setFilterByCategory] = useState(false);
 	const [currentCategory, setCurrentCategory] = useState('');
-	const [currentColorCategory, setCurrentColorCategory] = useState('')
+	const [currentColorCategory, setCurrentColorCategory] = useState('все цвета')
 
 	const dispatch = useDispatch();
 
@@ -39,10 +39,6 @@ const Catalog = () => {
 	};
 
 	const ColorCategoryChangeHandler = (color) => {
-		/* if (color === 'все цвета') {
-			console.log('выводить исходный каталог');
-		} */
-
 		if (!currentCategory) {
 			dispatch(filter_color(color))
 		}
