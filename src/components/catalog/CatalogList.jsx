@@ -3,14 +3,15 @@ import MyButton from '../UI/MyButton';
 import { useSelector } from 'react-redux';
 import CatalogCards from './CatalogCards';
 
-const CatalogList = ({filter, currentColorCategory}) => {
+const CatalogList = ({filter, currentColorCategory, selectedSort}) => {
 
 	const catalogItems = useSelector(state => state.catalog.catalog)
 	const filteredCatalog = useSelector(state => state.catalog.filteredCatalogItems)
 
 	if (currentColorCategory) {
 		filteredCatalog.filter((item) =>
-			item.color === currentColorCategory)
+			item.color === currentColorCategory
+		)
 	}
 
 	const filteredFinally = Array.from(filteredCatalog)

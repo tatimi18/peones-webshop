@@ -1,17 +1,32 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { connect } from 'react-redux';
 import CatalogCategories from './CatalogCategories';
 import CatalogList from './CatalogList';
-import { filter_lifeForm, filter_formOfFlower, filter_periodOfFlowering, filter_selection, filter_color, getDefault } from '../../store/slices/catalogSlice';
+import { 
+	filter_lifeForm, 
+	filter_formOfFlower, 
+	filter_periodOfFlowering, 
+	filter_selection, 
+	filter_color, 
+	getDefault, 
+	changeSelectedSort, 
+	sortByTitle, 
+	sortByPrice,
+	reverseSort
+} from '../../store/slices/catalogSlice';
 import CatalogFilterByColor from './CatalogFilterByColor';
+import MySelect from '../UI/MySelect';
 
 const Catalog = () => {
 	const [filterByCategory, setFilterByCategory] = useState(false);
-	const [currentCategory, setCurrentCategory] = useState('');
-	const [currentColorCategory, setCurrentColorCategory] = useState('все цвета')
+	const [currentCategory, setCurrentCategory] = useState('Коллекция пионов');
+	const [currentColorCategory, setCurrentColorCategory] = useState('все цвета');
 
 	const dispatch = useDispatch();
+
+	const selectedSort = useSelector(state => state.catalog.selectedSort)
+	
 
 	const categoryChangeHandler = (category) => {
 		setCurrentCategory(category);
@@ -38,12 +53,29 @@ const Catalog = () => {
 		setFilterByCategory(true);
 	};
 
-	const ColorCategoryChangeHandler = (color) => {
+	const colorCategoryChangeHandler = (color) => {
 		if (!currentCategory) {
 			dispatch(filter_color(color))
 		}
 		setCurrentColorCategory(color);
 	};
+
+	function selectedSortHandler(sort) {
+		dispatch(changeSelectedSort(sort))
+
+		if (sort.includes('title')) {
+			dispatch(sortByTitle())
+		}
+
+		if (sort.includes('price')) {
+			dispatch(sortByPrice())
+		}
+
+		if (sort.includes('DOWN')) {
+			dispatch(reverseSort())
+		}
+		
+	}
 
 	return (
 		<div>
@@ -55,13 +87,25 @@ const Catalog = () => {
 						<div className="catalog__sidebar">
 							
 							<div className="catalog__categories">
+
+								<MySelect
+									options={[
+										{value: 'default', data: '', name: 'по умолчанию'},
+										{value: 'title-UP', data: 'name_en', name: 'название ↑'},
+										{value: 'title-DOWN', data: 'name_en', name: 'название ↓'}, 
+										{value: 'price-UP', data: 'price', name: 'цена ↑'},
+										{value: 'price-DOWN', data: 'price', name: 'цена ↓'},
+									]}
+									value={selectedSort}
+									onChange={selectedSortHandler}
+								/>
 								<CatalogCategories 
 									currentCategory={currentCategory}
 									categoryChangeHandler={categoryChangeHandler}
 								/>
 								<CatalogFilterByColor
 									currentColorCategory={currentColorCategory}
-									ColorCategoryChangeHandler={ColorCategoryChangeHandler}
+									ColorCategoryChangeHandler={colorCategoryChangeHandler}
 								/>
 							</div>
 						</div>
@@ -69,6 +113,7 @@ const Catalog = () => {
 						<CatalogList 
 							filter={filterByCategory}
 							currentColorCategory={currentColorCategory}
+							selectedSort={selectedSort}
 						/>
 					</div>
 				</div>
