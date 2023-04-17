@@ -3,9 +3,9 @@ import MyButton from '../UI/MyButton';
 import { useSelector } from 'react-redux';
 import CatalogCards from './CatalogCards';
 
-const CatalogList = ({filter, currentColorCategory, selectedSort}) => {
+const CatalogList = ({currentCategory, currentColorCategory, selectedSort}) => {
 
-	const catalogItems = useSelector(state => state.catalog.catalog)
+	const originalCatalog = useSelector(state => state.catalog.catalog)
 	const filteredCatalog = useSelector(state => state.catalog.filteredCatalogItems)
 
 	if (currentColorCategory) {
@@ -28,25 +28,26 @@ const CatalogList = ({filter, currentColorCategory, selectedSort}) => {
 
 	return (
 		<div className="catalog__list">
-			{!filter &&
-				currentColorCategory === 'все цвета' &&
-				<CatalogCards parentToRender={catalogItems}/>
+			{currentCategory === 'Коллекция пионов' &&
+				currentColorCategory === 'все цвета' && 
+				selectedSort === 'default' &&
+				<CatalogCards parentToRender={originalCatalog}/>
 			}
 
-			{filter &&
+			{currentCategory &&
 				currentColorCategory === 'все цвета' &&
 				<CatalogCards parentToRender={filteredCatalog}/>
 			}
-			{!filter &&
+			{!currentCategory &&
 				currentColorCategory !== 'все цвета' && 
 				<CatalogCards parentToRender={filteredCatalog}/>
 			}
-			{filter &&
+			{currentCategory &&
 				currentColorCategory !== 'все цвета' &&
 				filteredFinally
 			}
 
-			{filter &&
+			{currentCategory &&
 				currentColorCategory !== 'все цвета' && !filteredFinally.length &&
 				<div className='catalog__empty__wrapper'>
 					<img src="icons/filter.svg" alt="filter-icon" />

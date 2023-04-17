@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { connect } from 'react-redux';
 import CatalogCategories from './CatalogCategories';
@@ -13,23 +13,24 @@ import {
 	changeSelectedSort, 
 	sortByTitle, 
 	sortByPrice,
-	reverseSort
+	reverseSort,
+	changeCurrentCategory,
+	changeColorCategory
 } from '../../store/slices/catalogSlice';
 import CatalogFilterByColor from './CatalogFilterByColor';
 import MySelect from '../UI/MySelect';
 
 const Catalog = () => {
-	const [filterByCategory, setFilterByCategory] = useState(false);
-	const [currentCategory, setCurrentCategory] = useState('Коллекция пионов');
-	const [currentColorCategory, setCurrentColorCategory] = useState('все цвета');
 
 	const dispatch = useDispatch();
 
 	const selectedSort = useSelector(state => state.catalog.selectedSort)
+	const currentCategory = useSelector(state => state.catalog.currentCategory)
+	const currentColorCategory = useSelector(state => state.catalog.currentColorCategory)
 	
 
 	const categoryChangeHandler = (category) => {
-		setCurrentCategory(category);
+		dispatch(changeCurrentCategory(category));
 
 		if (category === 'Коллекция пионов') {
 			dispatch(getDefault())
@@ -50,14 +51,12 @@ const Catalog = () => {
 		if (category === 'США' || category === 'СССР' || category === 'Япония' || category === 'Франция') {
 			dispatch(filter_selection(category));
 		}
-		setFilterByCategory(true);
+
 	};
 
 	const colorCategoryChangeHandler = (color) => {
-		if (!currentCategory) {
-			dispatch(filter_color(color))
-		}
-		setCurrentColorCategory(color);
+		dispatch(changeColorCategory(color))
+		dispatch(filter_color(color))
 	};
 
 	function selectedSortHandler(sort) {
@@ -74,7 +73,6 @@ const Catalog = () => {
 		if (sort.includes('DOWN')) {
 			dispatch(reverseSort())
 		}
-		
 	}
 
 	return (
@@ -104,6 +102,7 @@ const Catalog = () => {
 									categoryChangeHandler={categoryChangeHandler}
 								/>
 								<CatalogFilterByColor
+									selectedSort={selectedSort}
 									currentColorCategory={currentColorCategory}
 									ColorCategoryChangeHandler={colorCategoryChangeHandler}
 								/>
@@ -111,7 +110,7 @@ const Catalog = () => {
 						</div>
 
 						<CatalogList 
-							filter={filterByCategory}
+							currentCategory={currentCategory}
 							currentColorCategory={currentColorCategory}
 							selectedSort={selectedSort}
 						/>
