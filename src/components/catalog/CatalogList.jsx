@@ -8,7 +8,7 @@ const CatalogList = ({currentCategory, currentColorCategory, selectedSort}) => {
 	const originalCatalog = useSelector(state => state.catalog.catalog)
 	const filteredCatalog = useSelector(state => state.catalog.filteredCatalogItems)
 
-	if (currentColorCategory) {
+	if (currentColorCategory !== 'все цвета') {
 		filteredCatalog.filter((item) =>
 			item.color === currentColorCategory
 		)
@@ -28,26 +28,29 @@ const CatalogList = ({currentCategory, currentColorCategory, selectedSort}) => {
 
 	return (
 		<div className="catalog__list">
-			{currentCategory === 'Коллекция пионов' &&
+			{	
+				currentCategory === 'Коллекция пионов' &&
 				currentColorCategory === 'все цвета' && 
 				selectedSort === 'default' &&
 				<CatalogCards parentToRender={originalCatalog}/>
 			}
 
-			{currentCategory &&
-				currentColorCategory === 'все цвета' &&
-				<CatalogCards parentToRender={filteredCatalog}/>
+			{
+				(currentCategory !== 'Коллекция пионов' ||
+				currentColorCategory !== 'все цвета' ||
+				selectedSort !== 'default') &&
+				<CatalogCards parentToRender={originalCatalog}/>
 			}
-			{!currentCategory &&
-				currentColorCategory !== 'все цвета' && 
-				<CatalogCards parentToRender={filteredCatalog}/>
-			}
-			{currentCategory &&
+
+			{
+				currentCategory !== 'Коллекция пионов' &&
 				currentColorCategory !== 'все цвета' &&
+				selectedSort !== 'default' &&
 				filteredFinally
 			}
 
-			{currentCategory &&
+			{
+				currentCategory !== 'Коллекция пионов' &&
 				currentColorCategory !== 'все цвета' && !filteredFinally.length &&
 				<div className='catalog__empty__wrapper'>
 					<img src="icons/filter.svg" alt="filter-icon" />

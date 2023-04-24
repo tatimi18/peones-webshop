@@ -32,10 +32,6 @@ const Catalog = () => {
 	const categoryChangeHandler = (category) => {
 		dispatch(changeCurrentCategory(category));
 
-		if (category === 'Коллекция пионов') {
-			dispatch(getDefault())
-		}
-
 		if (category === 'Травянистые' || category === 'Ито-гибриды') {
 			dispatch(filter_lifeForm(category));
 		}
