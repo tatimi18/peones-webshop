@@ -46,7 +46,7 @@ const CatalogItemPage = () => {
 						<div className="catalogItem-page__price">{catalogItem.price} ₽</div>
 						<MyButton 
 							children={'В корзину'} 
-							addExtraClass={'button__catalog'}
+							addExtraClass={'button__catalog button__catalog__item-page'}
 						/>
 
 						<div className="catalogItem-page__subtitle">Характеристики</div>
