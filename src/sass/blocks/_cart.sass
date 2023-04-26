@@ -1,0 +1,64 @@
+.cart
+    &__empty
+        &__wrapper
+            display: flex
+            margin: 0 auto
+            align-items: center
+    &__wrapper
+        padding: 25px 0
+        display: flex
+        justify-content: space-between
+    &__icon
+        width: 30px
+    &__ol
+        padding: 0 20px 0 0
+    &__item
+        &__wrapper
+            display: flex
+            justify-content: space-between
+            align-items: center
+        &__img-and-name__wrapper
+            display: flex
+            align-items: center
+            width: 70%
+        &__img
+            width: 15%
+        &__name
+            padding-left: 20px
+            font-size: 18px
+        &__hr
+            margin: 20px 0
+            border-bottom: 1px solid $grey_color
+        &__price
+            font-size: 18px
+            font-weight: 700
+        &__remove
+            padding: 9px
+            width: 56px
+            border-radius: 50%
+            cursor: pointer
+            &:hover
+                background: #dbdbdbae
+                transition: 0.5s all
+
+    &__total
+        padding: 20px
+        width: 40%
+        min-height: 345px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        border: 2px solid $pink_color
+        background-color: #da739026
+        &__title
+            font-weight: 400
+            font-size: 27px
+            color: $grey_color
+        &__position
+            padding-top: 30px
+            font-family: "Montserrat"
+            font-weight: 500
+            font-size: 20px
+            color: #000
+        &__link
+            padding: 10px 0

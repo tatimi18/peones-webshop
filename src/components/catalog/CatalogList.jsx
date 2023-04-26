@@ -1,9 +1,18 @@
 import React from 'react';
 import MyButton from '../UI/MyButton';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CatalogCards from './CatalogCards';
+import { addToCart, addPrice } from '../../store/slices/shoppingCartSlice';
 
 const CatalogList = ({currentCategory, currentColorCategory, selectedSort}) => {
+	const dispatch = useDispatch();
+	const shoppingCart = useSelector(state => state.shoppingCart.shoppingCartList)
+	console.log(shoppingCart);
+
+	function addToCartAction(card, price) {
+		dispatch(addToCart(card))
+		dispatch(addPrice(Number(price.split(' ').join(''))))
+	}
 
 	const originalCatalog = useSelector(state => state.catalog.catalog)
 	const filteredCatalog = useSelector(state => state.catalog.filteredCatalogItems)
@@ -14,6 +23,7 @@ const CatalogList = ({currentCategory, currentColorCategory, selectedSort}) => {
 		)
 	}
 
+
 	const filteredFinally = Array.from(filteredCatalog)
 		.filter(
 		(item => item.color === currentColorCategory))
@@ -23,7 +33,11 @@ const CatalogList = ({currentCategory, currentColorCategory, selectedSort}) => {
 			<div className='catalog__card catalog__card__name__en'>{card.name_en}</div>	
 			<div className='catalog__card catalog__card__name__rus'>{card.name_rus}</div>	
 			<div className="catalog__card catalog__card__price">{card.price} ₽</div>
-			<MyButton children={'В корзину'} addExtraClass={'button__catalog'}/>
+			<MyButton 
+				children={'В корзину'} 
+				addExtraClass={'button__catalog'}
+				onClick={() => addToCartAction(card, card.price)}
+			/>
 		</div>)
 
 	return (

@@ -9,7 +9,6 @@ import {
 	filter_periodOfFlowering, 
 	filter_selection, 
 	filter_color, 
-	getDefault, 
 	changeSelectedSort, 
 	sortByTitle, 
 	sortByPrice,

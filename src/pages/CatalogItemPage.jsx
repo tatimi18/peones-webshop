@@ -4,12 +4,26 @@ import catalog from '../data/catalog.json'
 import MyButton from '../components/UI/MyButton';
 import { Fancybox } from "@fancyapps/ui/dist/fancybox/fancybox.esm.js";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, addPrice } from '../store/slices/shoppingCartSlice';
+
 
 const CatalogItemPage = () => {
 	Fancybox.bind()
 	const params = useParams()
 	const catalogfilter = catalog.filter( el => el.name_en === params.name_en)
 	const catalogItem = catalogfilter[0]
+
+	const dispatch = useDispatch();
+	const shoppingCart = useSelector(state => state.shoppingCart.shoppingCartList)
+	const amount = useSelector(state => state.shoppingCart.amount)
+	console.log(shoppingCart);
+
+	function addToCartAction(card, price) {
+		dispatch(addToCart(card))
+		dispatch(addPrice(Number(price.split(' ').join(''))))
+	}
+	console.log(amount);
 
 	return (
 		<div>
@@ -47,6 +61,7 @@ const CatalogItemPage = () => {
 						<MyButton 
 							children={'В корзину'} 
 							addExtraClass={'button__catalog button__catalog__item-page'}
+							onClick={() => addToCartAction(catalogItem, catalogItem.price)}
 						/>
 
 						<div className="catalogItem-page__subtitle">Характеристики</div>

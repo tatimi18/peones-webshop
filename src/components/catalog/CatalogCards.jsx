@@ -1,9 +1,18 @@
 import React from 'react'
 import MyButton from '../UI/MyButton'
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { addToCart, addPrice } from '../../store/slices/shoppingCartSlice';
 
 const CatalogCards = ({parentToRender}) => {
 	const router = useNavigate();
+	const dispatch = useDispatch();
+
+	function addToCartAction(card, price) {
+		dispatch(addToCart(card))
+		dispatch(addPrice(Number(price.split(' ').join(''))))
+	}
+
 	return (
 		<>
 			{Array.from(parentToRender).map(card => 
@@ -26,7 +35,7 @@ const CatalogCards = ({parentToRender}) => {
 					<MyButton 
 						children={'В корзину'} 
 						addExtraClass={'button__catalog'}
-						
+						onClick={() => addToCartAction(card, card.price)}
 					/>
 				</div>
 			)}
