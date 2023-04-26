@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-	const countOfItemsInCart = useSelector(state => state.shoppingCart.shoppingCartList)
+	const countOfItemsInCart = useSelector(state => state.shoppingCart.positions)
   return (
 	<div className="oneLine">
 		<nav>
@@ -36,13 +36,12 @@ const Navbar = () => {
 				<Link to='/cart'>
 					<div className='main__shopping-cart__wrapper'>
 						<img src={bagIcon} alt="bag" className="main-search__item"/>
-						{countOfItemsInCart.length === 0
+						{countOfItemsInCart === 0
 							? <></>
 							: <div className="main__shopping-cart__round">
-								{countOfItemsInCart.length}
+								{countOfItemsInCart}
 							</div>
 						}
-
 					</div>
 				</Link>
 			</div>

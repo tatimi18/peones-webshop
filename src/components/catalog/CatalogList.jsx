@@ -2,16 +2,13 @@ import React from 'react';
 import MyButton from '../UI/MyButton';
 import { useDispatch, useSelector } from 'react-redux';
 import CatalogCards from './CatalogCards';
-import { addToCart, addPrice } from '../../store/slices/shoppingCartSlice';
+import { addToCart } from '../../store/slices/shoppingCartSlice';
 
 const CatalogList = ({currentCategory, currentColorCategory, selectedSort}) => {
 	const dispatch = useDispatch();
-	const shoppingCart = useSelector(state => state.shoppingCart.shoppingCartList)
-	console.log(shoppingCart);
 
 	function addToCartAction(card, price) {
 		dispatch(addToCart(card))
-		dispatch(addPrice(Number(price.split(' ').join(''))))
 	}
 
 	const originalCatalog = useSelector(state => state.catalog.catalog)
@@ -22,7 +19,6 @@ const CatalogList = ({currentCategory, currentColorCategory, selectedSort}) => {
 			item.color === currentColorCategory
 		)
 	}
-
 
 	const filteredFinally = Array.from(filteredCatalog)
 		.filter(
@@ -36,7 +32,7 @@ const CatalogList = ({currentCategory, currentColorCategory, selectedSort}) => {
 			<MyButton 
 				children={'В корзину'} 
 				addExtraClass={'button__catalog'}
-				onClick={() => addToCartAction(card, card.price)}
+				onClick={() => addToCartAction(card)}
 			/>
 		</div>)
 

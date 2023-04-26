@@ -5,19 +5,27 @@ import { Link } from "react-router-dom";
 import MyButton from '../components/UI/MyButton'
 import bag_empty_icon from '../icons/bag_empty.svg'
 import trash_icon from '../icons/trash.svg'
-import {removeFromCart, removePrice} from '../store/slices/shoppingCartSlice.js'
+import {decrementQuantity, incrementQuantity, removeFromCart} from '../store/slices/shoppingCartSlice.js'
 
 
 const ShoppingCartPage = () => {
 	let keyAcc = 0;
 	const dispatch = useDispatch();
+
 	const cartlList = useSelector(state => state.shoppingCart.shoppingCartList)
+	const countOfItemsInCart = useSelector(state => state.shoppingCart.positions)
 	const amount = useSelector(state => state.shoppingCart.amount)
 
-	function removeItemAction(itemName, price) {
-		console.log(cartlList);
-		dispatch(removeFromCart(itemName))
-		dispatch(removePrice(Number(price.split(' ').join(''))))
+	function removeItemAction(item) {
+		dispatch(removeFromCart(item))
+	}
+
+	function incrementQuantityAction(item) {
+		dispatch(incrementQuantity(item))
+	}
+
+	function decrementQuantityAction(item) {
+		dispatch(decrementQuantity(item))
 	}
 
 	return (
@@ -41,11 +49,25 @@ const ShoppingCartPage = () => {
 												<div className="cart__item__name">{item.name_en}<br></br>({item.name_rus})</div>
 											</div>
 											<div className="cart__item__price">{item.price} ₽</div>
+
+											<div className="cart__item__counter-wrapper">
+												<div className="cart__item__button-wrapper" onClick={() => decrementQuantityAction(item)}>
+													<div className="minus"></div>
+												</div>
+												<div className="cart__item__counter">{item.quantity}</div>
+												<div className="cart__item__button-wrapper" onClick={() => incrementQuantityAction(item)}>
+													<div className="plus"></div>
+													<div className="plus plus__vertical"></div>
+												</div>
+											</div>
+
+											<div className="cart__item__price">{Number(item.price.split(' ').join('')) * item.quantity} ₽</div>
+
 											<img 
 												src={trash_icon} 
 												alt={trash_icon} 
 												className="cart__item__remove" 
-												onClick={() => removeItemAction(item.name_en, item.price)}
+												onClick={() => removeItemAction(item)}
 											/>
 										</li>
 										<hr className='cart__item__hr'></hr>
@@ -54,7 +76,7 @@ const ShoppingCartPage = () => {
 							</ol>
 							<div className="cart__total">
 								<div className="title">Итог:</div>
-								<div className="cart__total__position">Количество товаров: {cartlList.length}</div>
+								<div className="cart__total__position">Количество товаров: {countOfItemsInCart}</div>
 								<div className="cart__total__position">Сумма к оплате: {amount} ₽</div>
 								<div className="about__p">Выбор способа доставки, ее оплаты и оплаты товара осуществляется после нажатия кнопки «Оформить заказ»</div>
 								<Link className="cart__total__link" to='/#delivery-payment'>Информация о доставке и оплате</Link>

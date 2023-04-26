@@ -4,8 +4,8 @@ import catalog from '../data/catalog.json'
 import MyButton from '../components/UI/MyButton';
 import { Fancybox } from "@fancyapps/ui/dist/fancybox/fancybox.esm.js";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, addPrice } from '../store/slices/shoppingCartSlice';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../store/slices/shoppingCartSlice';
 
 
 const CatalogItemPage = () => {
@@ -15,15 +15,10 @@ const CatalogItemPage = () => {
 	const catalogItem = catalogfilter[0]
 
 	const dispatch = useDispatch();
-	const shoppingCart = useSelector(state => state.shoppingCart.shoppingCartList)
-	const amount = useSelector(state => state.shoppingCart.amount)
-	console.log(shoppingCart);
 
-	function addToCartAction(card, price) {
+	function addToCartAction(card) {
 		dispatch(addToCart(card))
-		dispatch(addPrice(Number(price.split(' ').join(''))))
 	}
-	console.log(amount);
 
 	return (
 		<div>
@@ -61,7 +56,7 @@ const CatalogItemPage = () => {
 						<MyButton 
 							children={'В корзину'} 
 							addExtraClass={'button__catalog button__catalog__item-page'}
-							onClick={() => addToCartAction(catalogItem, catalogItem.price)}
+							onClick={() => addToCartAction(catalogItem)}
 						/>
 
 						<div className="catalogItem-page__subtitle">Характеристики</div>

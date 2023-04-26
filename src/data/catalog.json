@@ -32,7 +32,8 @@
         "fertility": "",
         "smell": "Сильный и сладкий (Strong and sweet)",
         "height": "90 см",
-        "in_collection_from": "2016"
+        "in_collection_from": "2016",
+        "quantity": 1
     },
 
     {
@@ -71,7 +72,8 @@
         "fertility": "Обоеполые",
         "smell": "Отсутствует (None)",
         "height": "80 см",
-        "in_collection_from": "2016"
+        "in_collection_from": "2016",
+        "quantity": 1
     },
 
 
@@ -110,7 +112,8 @@
         "fertility": "Обоеполые",
         "smell": "Слабый (Little)",
         "height": "80 см",
-        "in_collection_from": "2016"
+        "in_collection_from": "2016",
+        "quantity": 1
     },
 
 
@@ -147,7 +150,8 @@
         "fertility": "Обоеполые",
         "smell": "Слабый приятный (Little pleasant)",
         "height": "70 см",
-        "in_collection_from": "2016"
+        "in_collection_from": "2016",
+        "quantity": 1
     },
     
     {
@@ -181,7 +185,8 @@
         "fertility": "В качестве материнского растения",
         "smell": "Слабый (Little)",
         "height": "85 см",
-        "in_collection_from": "2016"
+        "in_collection_from": "2016",
+        "quantity": 1
     },
 
     {
@@ -222,7 +227,8 @@
         "fertility": "Обоеполые",
         "smell": "Неопределенный (None)",
         "height": "90-120 см",
-        "in_collection_from": "2013"
+        "in_collection_from": "2013",
+        "quantity": 1
     },
 
     {
@@ -262,7 +268,8 @@
         "fertility": "Обоеполые",
         "smell": "Слабый (Little)",
         "height": "70 см",
-        "in_collection_from": "2016"
+        "in_collection_from": "2016",
+        "quantity": 1
     },
 
     {
@@ -300,7 +307,8 @@
         "fertility": "",
         "smell": "",
         "height": "80 см",
-        "in_collection_from": "2016"
+        "in_collection_from": "2016",
+        "quantity": 1
     },
 
     {
@@ -338,7 +346,8 @@
         "fertility": "",
         "smell": "Слабый (Little)",
         "height": "90 см",
-        "in_collection_from": "2015"
+        "in_collection_from": "2015",
+        "quantity": 1
     },
 
     {
@@ -375,7 +384,8 @@
         "fertility": "В качестве материнского растения",
         "smell": "Пряной гвоздики",
         "height": "85 см",
-        "in_collection_from": "2016"
+        "in_collection_from": "2016",
+        "quantity": 1
     },
 
     {
@@ -408,7 +418,8 @@
         "fertility": "",
         "smell": "Слабый (Little)",
         "height": "90 см",
-        "in_collection_from": "2016"
+        "in_collection_from": "2016",
+        "quantity": 1
     },
 
     {
@@ -443,7 +454,8 @@
         "fertility": "",
         "smell": "Слабый приятный (Little pleasant)",
         "height": "60-70 см",
-        "in_collection_from": ""
+        "in_collection_from": "",
+        "quantity": 1
     },
     
     {
@@ -478,7 +490,8 @@
         "fertility": "",
         "smell": "Сильный и сладкий (Strong and sweet)",
         "height": "90 см",
-        "in_collection_from": "2015"
+        "in_collection_from": "2015",
+        "quantity": 1
     },
 
     {
@@ -511,7 +524,8 @@
         "fertility": "",
         "smell": "Отсутствует (None)",
         "height": "80 см",
-        "in_collection_from": "2015"
+        "in_collection_from": "2015",
+        "quantity": 1
     },
 
     {
@@ -546,6 +560,7 @@
         "fertility": "",
         "smell": "Слабый приятный (Little pleasant)",
         "height": "90-100 см",
-        "in_collection_from": "2016"
+        "in_collection_from": "2016",
+        "quantity": 1
     }
 ]

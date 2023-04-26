@@ -20,9 +20,9 @@
         &__img-and-name__wrapper
             display: flex
             align-items: center
-            width: 70%
+            width: 35%
         &__img
-            width: 15%
+            width: 32%
         &__name
             padding-left: 20px
             font-size: 18px
@@ -32,6 +32,24 @@
         &__price
             font-size: 18px
             font-weight: 700
+        &__counter-wrapper
+            display: flex
+            justify-content: space-between
+            align-items: center
+            width: 17%
+        &__button-wrapper
+            position: relative
+            display: flex
+            align-items: center
+            justify-content: center
+            padding: 12px
+            width: 40px
+            height: 40px
+            border-radius: 50%
+            cursor: pointer
+            &:hover
+                background: #dbdbdbae
+                transition: 0.5s all
         &__remove
             padding: 9px
             width: 56px
@@ -62,3 +80,16 @@
             color: #000
         &__link
             padding: 10px 0
+
+.minus
+    height: 2px
+    width: 100%
+    background-color: #000
+
+.plus
+    position: absolute
+    height: 2px
+    width: 16px
+    background-color: #000 
+    &__vertical
+        transform: rotate(90deg)
