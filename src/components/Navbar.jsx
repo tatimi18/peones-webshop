@@ -3,8 +3,10 @@ import searchIcon from '../icons/search_main.svg'
 import bagIcon from '../icons/bag_main.svg'
 import navbar from '../data/navbar.json'
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+	const countOfItemsInCart = useSelector(state => state.shoppingCart.shoppingCartList)
   return (
 	<div className="oneLine">
 		<nav>
@@ -31,7 +33,18 @@ const Navbar = () => {
 			<div className="main-search">
 				<textarea name="nameTextarea" id="" cols="11" rows="1" className="main-search__textarea" placeholder="Поиск"></textarea>
 				<a href="/search"><img src={searchIcon} alt="search" className="main-search__item"/></a>
-				<Link to='/cart'><img src={bagIcon} alt="bag" className="main-search__item"/></Link>
+				<Link to='/cart'>
+					<div className='main__shopping-cart__wrapper'>
+						<img src={bagIcon} alt="bag" className="main-search__item"/>
+						{countOfItemsInCart.length === 0
+							? <></>
+							: <div className="main__shopping-cart__round">
+								{countOfItemsInCart.length}
+							</div>
+						}
+
+					</div>
+				</Link>
 			</div>
 		</div>
 	</div>
