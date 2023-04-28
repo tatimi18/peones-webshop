@@ -12,17 +12,28 @@ html, body
 .wrapper
 	min-height: 100%
 
+.container-mainNavbar
+	margin: 0 auto
+	padding: 2.866667rem 2.6667rem 2.866667rem 2.6667rem
+	max-width: 1182px
+
 .container-navbar
 	margin: 0 0 0 -1.6rem
 	display: flex
 	justify-content: space-between
 	align-items: center
-	//width: 100%
 
 .container
 	margin: 0 auto
-	padding: 5.866667rem 2.6667rem 5.3333rem 2.6667rem
+	padding: 12.866667rem 2.6667rem 5.3333rem 2.6667rem
 	max-width: 1182px
+	&_gallery
+		max-width: 842px
+	&__form
+		width: 1182px
+		display: flex
+		justify-content: space-between
+		align-items: center
 
 .blocks-wrapper
 	display: flex
@@ -32,14 +43,6 @@ html, body
 	margin: 0 auto
 	max-width: 1182px
 	padding: 0 2.6667rem 0 2.6667rem
-
-.container-form
-	width: 1182px
-	margin: 0 auto
-	padding: 5.866667rem 2.6667rem 5.3333rem 2.6667rem
-	display: flex
-	justify-content: space-between
-	align-items: center
 
 @import 'base/mixins'
 @import 'blocks/main'
@@ -52,9 +55,10 @@ html, body
 @import 'blocks/form'
 @import 'blocks/footer'
 @import 'blocks/pageup'
-@import 'base/media'
+//@import 'base/media'
 @import 'blocks/modal'
 @import 'blocks/catalogItemPage'
 @import 'blocks/cart'
+@import 'blocks/error'
 
 

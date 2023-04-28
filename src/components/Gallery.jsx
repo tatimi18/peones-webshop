@@ -6,9 +6,8 @@ const Gallery = () => {
     Fancybox.bind()
     return (
         <div>
-            <div className="local-link" id="photogallery"></div>
             <section className="gallery">
-                <div className="container_gallery">
+                <div className="container container_gallery">
                     <div className="title">Фотогалерея</div>
                     <div className="gallery__wrapper">
                         <a href="img/gallery/girl_1_big.jpg" data-fancybox>

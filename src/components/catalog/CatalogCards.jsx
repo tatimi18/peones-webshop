@@ -20,11 +20,11 @@ const CatalogCards = ({parentToRender}) => {
 						src={card.main_picture} 
 						alt={card.name_en} 
 						className='catalog__card catalog__card__img' 
-						onClick={() => router(`/${card.name_en}`)}
+						onClick={() => router(`/catalog/${card.name_en}`)}
 					/>
 					<div 
 						className='catalog__card catalog__card__name__en'
-						onClick={() => router(`/${card.name_en}`)}
+						onClick={() => router(`/catalog/${card.name_en}`)}
 					>
 						{card.name_en}
 					</div>

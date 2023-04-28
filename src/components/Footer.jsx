@@ -26,7 +26,7 @@ const Footer = () => {
             <div className="container-footer">
                 <div className="footer__blocks-wrapper">
                     <div className="footer__block">
-                        <div className="footer__title">Peones</div>
+                        <div className="main__title">Peones</div>
                         <div className="footer__subtitle">частная коллекция пионов из Сергиева Посада</div>
                         <a href="tel:+79036111388" className="form-section__info">+7 (903) 611 - 13 - 88</a>
                         <a href="mailto:peones@peones.ru" className="form-section__info">peones@peones.ru</a>

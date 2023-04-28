@@ -36,7 +36,7 @@ const ShoppingCartPage = () => {
 					{cartlList.length === 0
 						? <div className='cart__empty__wrapper'>
 								<img src={bag_empty_icon} className='cart__icon' alt="empty-bag-icon" />
-								<div className="catalog__empty__text">Корзина пока пустая</div>
+								<div className="catalog__empty__text">В корзине пока пусто</div>
 							</div>
 						: <>
 							<ol className="cart__ol">
@@ -79,7 +79,7 @@ const ShoppingCartPage = () => {
 								<div className="cart__total__position">Количество товаров: {countOfItemsInCart}</div>
 								<div className="cart__total__position">Сумма к оплате: {amount} ₽</div>
 								<div className="about__p">Выбор способа доставки, ее оплаты и оплаты товара осуществляется после нажатия кнопки «Оформить заказ»</div>
-								<Link className="cart__total__link" to='/#delivery-payment'>Информация о доставке и оплате</Link>
+								<Link className="cart__total__link" to='/delivery-payment'>Информация о доставке и оплате</Link>
 								<MyButton
 									children={'Оформить заказ'}
 									addExtraClass={'button__catalog button__catalog__item-page'}

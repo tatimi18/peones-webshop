@@ -1,31 +1,26 @@
 [
     {
-        "href": "#mainpage", 
-        "text": "Главная"
-    },
-
-    {
-        "href": "#catalog", 
+        "href": "/", 
         "text": "Каталог"
     },
 
     {
-        "href": "#delivery-payment",  
+        "href": "/delivery-payment",  
         "text": "Доставка и оплата"
     },
 
     {
-        "href": "#photogallery",  
+        "href": "/gallery",  
         "text": "Фотогалерея"
     },
 
     {
-        "href": "#about", 
+        "href": "/about", 
         "text": "О нас"
     },
 
     {
-        "href": "#contacts",  
+        "href": "/contacts",  
         "text": "Контакты" 
     }   
 ]

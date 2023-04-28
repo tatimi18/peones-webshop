@@ -1,7 +1,9 @@
 .main
-    height: 1080px
-    max-width: 100%
-    background: url(../img/bg/main_bg.jpg) center (center/cover) no-repeat
+    position: fixed
+    z-index: 500
+    width: 100%
+    //background: url(../img/bg/main_bg.jpg) center (-146px/cover) no-repeat
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/bg/main_bg.jpg) center (-146px/cover) no-repeat
     &__flower
         display: none
         position: absolute
@@ -45,20 +47,10 @@
             border: 2px solid $pink_color
             text-decoration: none 
 
-.main-search
+.main-cart
     margin-left: 0.667rem
     display: flex
     justify-content: space-between
-    width: 230px
-    &__textarea
-        //padding: 0.26667rem
-        background-color: rgba(0, 0, 0, 0)
-        font-weight: 500
-        font-size: 1.2rem
-        border: none
-        border-bottom: 1px solid $grey_color
-        &:focus
-            color: $white_color
 
 .main-contacts
     display: none
@@ -71,6 +63,3 @@
         letter-spacing: -0.03em
         color: $white_color
         text-decoration: none
-
-textarea::placeholder
-    color: $white_color

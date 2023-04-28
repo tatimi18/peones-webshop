@@ -21,45 +21,41 @@ const MyTabs = () => {
 				</div>
 			</div>
 		)
-
 		return result;
 	}
 
 	return (
-		<div>
-			<div className="local-link" id="delivery-payment"></div>
-			<Tabs className="tabs">
-				<div className="container">
-					<TabList className="tabs__list">
-						<Tab className="tabs__item">
-							<button 
-								id="Доставка"
-								className="tabs__btn"
-							>
-								Доставка
-							</button>
-						</Tab>
+		<Tabs className="tabs">
+			<div className="container">
+				<TabList className="tabs__list">
+					<Tab className="tabs__item">
+						<button 
+							id="Доставка"
+							className="tabs__btn"
+						>
+							Доставка
+						</button>
+					</Tab>
 
-						<Tab className="tabs__item">
-							<button 
-								id="Оплата"
-								className="tabs__btn" 
-							>
-								Оплата
-							</button>
-						</Tab>
-					</TabList>
+					<Tab className="tabs__item">
+						<button 
+							id="Оплата"
+							className="tabs__btn" 
+						>
+							Оплата
+						</button>
+					</Tab>
+				</TabList>
 
-					<TabPanel>
-						{renderTabContent(tabs_delivery)}
-					</TabPanel>
+				<TabPanel>
+					{renderTabContent(tabs_delivery)}
+				</TabPanel>
 
-					<TabPanel>
-						{renderTabContent(tabs_payment)}
-					</TabPanel>
-				</div>
-			</Tabs> 
-		</div>
+				<TabPanel>
+					{renderTabContent(tabs_payment)}
+				</TabPanel>
+			</div>
+		</Tabs> 
 	)
 }
 
