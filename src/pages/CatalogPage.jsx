@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { connect } from 'react-redux';
-import CatalogCategories from './CatalogCategories';
-import CatalogList from './CatalogList';
+import CatalogCategories from '../components/catalog/CatalogCategories';
+import CatalogList from '../components/catalog/CatalogList';
 import { 
 	filter_lifeForm, 
 	filter_formOfFlower, 
@@ -15,11 +15,11 @@ import {
 	reverseSort,
 	changeCurrentCategory,
 	changeColorCategory
-} from '../../store/slices/catalogSlice';
-import CatalogFilterByColor from './CatalogFilterByColor';
-import MySelect from '../UI/MySelect';
+} from '../store/slices/catalogSlice';
+import CatalogFilterByColor from '../components/catalog/CatalogFilterByColor';
+import MySelect from '../components/UI/MySelect';
 
-const Catalog = () => {
+const CatalogPage = () => {
 
 	const dispatch = useDispatch();
 
@@ -125,4 +125,4 @@ const mapStateToProps = store => {
 }
   
 // в наш компонент App, с помощью connect(mapStateToProps)
-export default connect(mapStateToProps)(Catalog)
+export default connect(mapStateToProps)(CatalogPage)

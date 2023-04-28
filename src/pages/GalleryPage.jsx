@@ -2,7 +2,7 @@ import React from 'react';
 import { Fancybox } from "@fancyapps/ui/dist/fancybox/fancybox.esm.js";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
-const Gallery = () => {
+const GalleryPage = () => {
     Fancybox.bind()
     return (
         <div>
@@ -46,4 +46,4 @@ const Gallery = () => {
     )
 }
 
-export default Gallery
+export default GalleryPage

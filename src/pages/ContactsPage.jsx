@@ -1,11 +1,11 @@
 import React from 'react'
-import ContactsInfo from './ContactsInfo'
+import ContactsInfo from '../components/ContactsInfo'
 import { Form, Button, FormField } from 'semantic-ui-react';
 import { useForm } from "react-hook-form";
 import ReactInputMask from 'react-input-mask';
 
 
-const Contacts = () => {
+const ContactsPage = () => {
 
 	const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
@@ -113,4 +113,4 @@ const Contacts = () => {
 	)
 }
 
-export default Contacts
+export default ContactsPage

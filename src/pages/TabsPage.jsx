@@ -4,7 +4,7 @@ import tabs_delivery from '../data/tabs-delivery.json'
 import tabs_payment from '../data/tabs-payment.json'
 
 
-const MyTabs = () => {
+const TabsPage = () => {
 	function renderTabContent(tabName) {
 		const result = tabName.map(tabItem => 
 			<div key={tabItem.altImg} className="tabs-item">
@@ -59,4 +59,4 @@ const MyTabs = () => {
 	)
 }
 
-export default MyTabs
+export default TabsPage
